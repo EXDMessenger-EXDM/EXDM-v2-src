@@ -205,7 +205,7 @@ async def auth_register():
     cursor.execute("INSERT INTO accounts (id, username, discriminator, bio, email, avatar, banner, flags, connected_accounts, bot_variables, status) \
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", account_req)
 
-    hash_userid = sha256(user_id.encode('utf-8')).hexdigest()
+    hash_userid = sha256(str(user_id).encode('utf-8')).hexdigest()
     hash_randomstr = sha256(generate_str(config.REGISTER_RANDOM_STR_LEN_SHA256).encode('utf-8')).hexdigest()
     token = f'{hash_userid}.{generate_str(config.REGISTER_RANDOM_STR_LEN)}.{hash_randomstr}'
 
@@ -281,7 +281,7 @@ async def api_guilds_guildid(guild_id):
             "banner": data[6],
             "avatar": data[7],
             "enable_separate_database": data[8],
-            "database_name": data[9]
+            #"database_name": data[9]
         }, 200
 
 @app.get('/api/channels/<path:channel_id>')

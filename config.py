@@ -15,7 +15,7 @@ CHECK_MESSAGE = True
 # Регистрация
 # MIN_USER_ID лучше оставляйте на 2
 MIN_USER_ID = 2
-MAX_USER_ID = 18446744073709551616
+MAX_USER_ID = (2 ** 63 - 1) # НЕ МЕНЯТЬ, ЛИМИТЫ SQLITE3
 
 # Стандартая биография о пользователе
 DEFAULT_BIO = ""
