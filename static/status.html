@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>EXDM</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/app-kit.css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+</head>
+<body>
+    <h1>Status</h1>
+    <canvas id="goodCanvas1" width="400" height="200" aria-label="Hello ARIA World" role="img"></canvas>
+    <script>
+        var ctx = document.getElementById("goodCanvas1");
+        var stats_array = [10];
+        function launch_chart() {
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: stats_array,
+                    datasets: [{
+                        label: 'API ping',
+                        data: stats_array,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)'
+                        ],
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: false
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+        launch_chart();
+    </script>
+</body>
+</html>
