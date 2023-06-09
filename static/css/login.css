@@ -1,0 +1,50 @@
+body {
+    background-color: #202020;
+	height: 98vh;
+
+    font-family: Inter,sans-serif;
+
+    color: white;
+}
+
+.login-panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login-panel button {
+    border: 0;
+    padding: 6px;
+    width: 104%;
+    color: white;
+    background-color: #101010;
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+
+.login-panel input {
+    border: 0;
+    padding: 6px;
+    width: 100%;
+    color: white;
+    background-color: #101010;
+    border: 1px solid transparent;
+    transition: 0.3s;
+    outline: none;
+}
+
+.login-panel input:hover {
+    border: 1px solid #f5424280;
+}
+
+.login-panel input:focus,
+.login-panel button:hover {
+    border: 1px solid #f54242;
+}
+
+.login-panel input:disabled,
+.login-panel button:disabled {
+    color: #505050;
+}

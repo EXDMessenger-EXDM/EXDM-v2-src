@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/login.css">
+    <script src="/js/jquery-3.6.4.min.js"></script>
     <title>EXDM</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
-    <input type="text" id="token" placeholder="Token">
-    <br>
-    <button onclick="window.location.href = `/login-by-token/${document.getElementById('token').value}`">Login</button>
+    <div class="login-panel">
+        <img src="/svg/EXDM-red.svg" height="100"></img><br><br>
+        <input type="text" id="email" placeholder="Почта"><br><br>
+        <input type="password" id="password" placeholder="Пароль от аккаунта"><br><br>
+        <button onclick="login()">Войти</button>
+        <p id="status">Ожидание данных от пользователя</p>
+    </div>
+    <script src="/js/login.js"></script>
 </body>
 </html>

@@ -72,7 +72,11 @@ async def site_map():
 
 @app.get('/')
 async def index():
-    return flask.render_template('index.html')
+    return flask.render_template('app.html')
+
+@app.get('/login')
+async def login():
+    return flask.render_template('login.html')
 
 # @app.get('/easter-egg')
 # async def easter_egg():
@@ -98,6 +102,15 @@ async def denoise_image():
 @app.get('/tests/test_commands')
 async def tests_test_commands():
     return flask.render_template('test_commands.html')
+
+@app.get('/svg/<path:filename>')
+async def cdn_svg(filename):
+    return flask.send_from_directory(
+        os.path.abspath('./static/svg'),
+        filename,
+        as_attachment = False,
+        mimetype = 'image/svg+xml'
+    )
 
 @app.get('/js/<path:filename>')
 async def cdn_js(filename):
@@ -151,7 +164,7 @@ async def auth_login():
     except:
         return {'message': 'Some fields is missing'}, 400
     
-    cursor.execute("SELECT id FROM accounts WHERE email = ? AND password = ?", (email, password))
+    cursor.execute("SELECT id FROM accounts WHERE email = ? AND password = ?", (email, password,))
     data = cursor.fetchone()
 
     if data is None:
@@ -159,7 +172,7 @@ async def auth_login():
     else:
         user_id = data[0]
         # Проверяем auth_token
-        cursor.execute("SELECT auth_token FROM auth_tokens WHERE user_id = ?", (user_id))
+        cursor.execute("SELECT auth_token FROM auth_tokens WHERE user_id = ?", (user_id,))
         data = cursor.fetchone()
         # if data is None:
         #     return {'message': 'Something went wrong. Auth token not found'}, 500
@@ -201,9 +214,9 @@ async def auth_register():
     bot_variables = ""
     status = 0
 
-    account_req = (user_id, username, discriminator, bio, email, avatar, banner, flags, connected_accounts, bot_variables, status)
-    cursor.execute("INSERT INTO accounts (id, username, discriminator, bio, email, avatar, banner, flags, connected_accounts, bot_variables, status) \
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", account_req)
+    account_req = (user_id, username, password, discriminator, bio, email, avatar, banner, flags, connected_accounts, bot_variables, status)
+    cursor.execute("INSERT INTO accounts (id, username, password, discriminator, bio, email, avatar, banner, flags, connected_accounts, bot_variables, status) \
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", account_req)
 
     hash_userid = sha256(str(user_id).encode('utf-8')).hexdigest()
     hash_randomstr = sha256(generate_str(config.REGISTER_RANDOM_STR_LEN_SHA256).encode('utf-8')).hexdigest()
@@ -231,14 +244,14 @@ async def api_users_me():
         return {
             "id": data[0],
             "username": data[1],
-            "discriminator": data[2],
-            "email": data[3],
-            "avatar": data[4],
-            "banner": data[5],
-            "flags": data[6].split(","),
-            "connected_accounts": data[7].split(","),
-            "bot_variables": data[8].split(","),
-            "status": data[9]
+            "discriminator": data[3],
+            "email": data[4],
+            "avatar": data[5],
+            "banner": data[6],
+            "flags": data[7].split(","),
+            "connected_accounts": data[8].split(","),
+            "bot_variables": data[9].split(","),
+            "status": data[10]
         }, 200
 
 @app.get('/api/users/<path:user_id>')
@@ -252,14 +265,14 @@ async def api_users_id(user_id):
         return {
             "id": data[0],
             "username": data[1],
-            "discriminator": data[2],
-            #"email": data[3],
-            "avatar": data[4],
-            "banner": data[5],
-            "flags": data[6].split(","),
-            "connected_accounts": data[7].split(","),
-            "bot_variables": data[8].split(","),
-            "status": data[9]
+            "discriminator": data[3],
+            #"email": data[4],
+            "avatar": data[5],
+            "banner": data[6],
+            "flags": data[7].split(","),
+            "connected_accounts": data[8].split(","),
+            "bot_variables": data[9].split(","),
+            "status": data[10]
         }, 200
 
 @app.get('/api/guilds/<path:guild_id>')
@@ -478,6 +491,7 @@ async def api_ai_dalle():
 #     return {'text': response}
 
 app.run(
-    host = '0.0.0.0',
+    # host = '0.0.0.0',
+    port = 3001,
     debug = True
 )
