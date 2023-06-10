@@ -357,6 +357,7 @@ async def api_channels_channelid_messages(channel_id):
         payload_db = (user_id, channel_id, content, "", "", "", 0)
 
         cursor.execute("INSERT INTO messages (author_id, channel_id, message, reactions, attachments, components, pinned) VALUES (?, ?, ?, ?, ?, ?, ?)", payload_db)
+        conn.commit()
 
         return {'message': 'Write ok'}, 200
 
