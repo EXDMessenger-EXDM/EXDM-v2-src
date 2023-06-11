@@ -1,8 +1,78 @@
 body {
-    background-color: #111;
-    color: #f54242;
+    background-color: #090909;
+    color: white;
 
     font-family: Inter,sans-serif;
 
-    text-align: center;
+    margin: 0;
+    padding: 0;
+
+    /* text-align: center; */
+}
+
+.welcome-screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.welcome-screen button {
+    border: 0;
+    padding: 6px;
+    width: 100%;
+    color: white;
+    background-color: #101010;
+    border: 1px solid transparent;
+    border-style: none none solid;
+    transition: 0.3s;
+    width: 340px;
+}
+
+.welcome-screen button:hover {
+    border: 1px solid #f54242;
+    border-style: none none solid;
+}
+
+.notification {
+    position: fixed;
+    background-color: #101010;
+    top: 6px;
+    right: 6px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.8);
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.channel {
+    margin-left: 8px;
+    margin-right: 8px;
+    padding-left: 6px;
+    background-color: #101010;
+
+    border: 1px solid transparent;
+    border-style: none none solid;
+    transition: 0.3s;
+}
+
+.channel:hover {
+    border: 1px solid #f54242;
+    border-style: none none solid;
+}
+
+#guilds {
+    position: fixed;
+    background-color: #101010;
+    width: 100px;
+    height: 100%;
+    overflow: hidden;
+}
+
+#channels {
+    position: fixed;
+    background-color: #151515;
+    margin-left: 100px;
+    width: 200px;
+    height: 100%;
+    overflow: hidden;
 }

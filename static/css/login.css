@@ -1,6 +1,6 @@
 body {
     background-color: #202020;
-	height: 98vh;
+    height: 98vh;
 
     font-family: Inter,sans-serif;
 
@@ -12,6 +12,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    max-width: 340px;
 }
 
 .login-panel button {
@@ -21,7 +22,9 @@ body {
     color: white;
     background-color: #101010;
     border: 1px solid transparent;
+    border-style: none none solid;
     transition: 0.3s;
+    width: 340px;
 }
 
 .login-panel input {
@@ -33,18 +36,23 @@ body {
     border: 1px solid transparent;
     transition: 0.3s;
     outline: none;
+    width: 326px;
+    border-style: none none solid;
 }
 
 .login-panel input:hover {
     border: 1px solid #f5424280;
+    border-style: none none solid;
 }
 
 .login-panel input:focus,
 .login-panel button:hover {
     border: 1px solid #f54242;
+    border-style: none none solid;
 }
 
 .login-panel input:disabled,
 .login-panel button:disabled {
     color: #505050;
+    border-style: none none none;
 }

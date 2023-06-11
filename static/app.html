@@ -4,12 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="./css/app.css">
     <title>EXDM</title>
 </head>
 <body>
-    <img src="/svg/EXDM-red.svg" height="100"></img>
+    <div id="guilds">
+      <div class="guild" id="some-guild-id-1">
+        <p>Server 1</p>
+      </div>
+    </div>
+    <div id="channels">
+      <div class="channel" id="some-channel-id-1">
+        <p>#channel1</p>
+      </div>
+      <div class="channel" id="some-channel-id-2">
+        <p>#channel2</p>
+      </div>
+    </div>
+    <div class="welcome-screen">
+      <h1>EXDM</h1>
+      <p>Начни общатся и раскидывать мемы</p>
+      <button onclick="document.getElementById('notimplemented').hidden = false; setTimeout(() => document.getElementById('notimplemented').hidden = true, 3000);">Посмотреть доступные сервера</button><br><br>
+      <button onclick="document.getElementById('notimplemented').hidden = false; setTimeout(() => document.getElementById('notimplemented').hidden = true, 3000);">Зайти на сервер по приглашению</button><br><br>
+      <button onclick="document.getElementById('notimplemented').hidden = false; setTimeout(() => document.getElementById('notimplemented').hidden = true, 3000);">Погладить котика</button>
+    </div>
+    <div class="notification" id="notimplemented" onclick="this.hidden = true;" hidden>
+      <h1>Ошибка</h1>
+      <p>Не реализовано</p>
+      <p>Но скоро будет</p>
+    </div>
+    <!-- <img src="/svg/EXDM-red.svg" height="100"></img>
     <h1>Not implemented / Не реализовано</h1>
-    <h3>We'll do it soon / Мы сделаем это в ближайшее время</h3>
+    <h3>We'll do it soon / Мы сделаем это в ближайшее время</h3> -->
 </body>
 </html>
