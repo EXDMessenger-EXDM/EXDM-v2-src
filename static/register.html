@@ -11,14 +11,15 @@
 <body>
     <div class="login-panel">
         <img src="/svg/EXDM-red.svg" height="100"></img><br><br>
-        <input type="text" id="email" placeholder="Почта"><br><br>
+        <input type="text" id="username" placeholder="Юзернейм"><br><br>
         <input type="password" id="password" placeholder="Пароль от аккаунта"><br><br>
+        <input type="email" id="email" placeholder="Почта"><br><br>
         <div class="twoButtons">
-            <button onclick="login()">Войти</button>
-            <button onclick="window.location.href = `/register`">Нету аккаунта? Зарегистрироваться</button>
+            <button onclick="register()">Зарегистрироваться</button>
+            <button onclick="window.location.href = `/login`">Уже есть аккаунт? Войти</button>
         </div>
         <p id="status">Ожидание данных от пользователя</p>
     </div>
-    <script src="/js/login.js"></script>
+    <script src="/js/register.js"></script>
 </body>
 </html>

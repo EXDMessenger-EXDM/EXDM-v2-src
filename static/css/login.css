@@ -56,3 +56,11 @@ body {
     color: #505050;
     border-style: none none none;
 }
+
+.twoButtons {
+    display: flex;
+}
+
+.twoButtons button:nth-child(1) {
+    margin-right: 5px;
+}

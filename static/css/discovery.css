@@ -1,0 +1,66 @@
+body {
+    background-color: #090909;
+    color: white;
+
+    font-family: Inter,sans-serif;
+
+    margin: 0;
+    padding: 0;
+
+    /* text-align: center; */
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 6px;
+    backdrop-filter: blur(6px);
+}
+
+.notification,
+.channel,
+.guild,
+.guild button::after {
+    transition: 0.3s;
+    border: 1px solid #202020;
+    border-style: none none solid;
+}
+.notification:hover,
+.channel:hover,
+.guild:hover,
+.guild button:hover {
+    border: 1px solid #f54242;
+    border-style: none none solid;
+}
+
+#guilds {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 110px;
+}
+
+.guild {
+    text-align: center;
+    background-color: #151515;
+    margin-left: 15px;
+    margin-right: 15px;
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.guild button {
+    border: 0;
+    padding: 6px;
+    width: 50%;
+    color: white;
+    background-color: #101010;
+    /* border: 1px solid transparent;
+    border-style: none none solid;
+    transition: 0.3s;
+    width: 340px; */
+}

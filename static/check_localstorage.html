@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXDM</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <script>
+        async function checkToken() {
+            let token = localStorage.getItem("token");
+            if (token == null) {
+                // no token, this is first auth
+                window.location.href = "/login";
+            } else {
+                // yes token
+                // check token, is valid or no
+                var check_token = await fetch("/auth/check_token", {
+                    headers: {
+                        Authorization: token
+                    }
+                });
+                //console.log(check_token);
+                if (check_token.status == 200) {
+                    window.location.href = "/app";
+                } else {
+                    window.location.href = "/login";
+                }
+            }
+        }
+        checkToken();
+    </script>
+</body>
+</html>

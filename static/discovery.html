@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/discovery.css">
+    <title>EXDM</title>
+</head>
+<body>
+    <div class="navbar">
+      <h1>EXDM | Поиск серверов</h1>
+    </div>
+    <div id="guilds">
+    </div>
+    <script>
+      for (var x of Array(3).keys()) {
+        document.getElementById('guilds').innerHTML = document.getElementById('guilds').innerHTML + `
+        <div class="guild">
+          <h1>Сервер ${x}</h1>
+          <p>Описание<br>да</p>
+          <button>Зайти</button>
+        </div>
+        `
+      }
+    </script>
+</body>
+</html>

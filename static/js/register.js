@@ -1,18 +1,19 @@
 let loginState = document.getElementById('status');
 
-async function login() {
+async function register() {
     $.ajax({
-        url: '/auth/login',
+        url: '/auth/register',
         method: 'post',
         data: 
         JSON.stringify({
-            email: document.getElementById("email").value,
-            password: document.getElementById("password").value
+            username: document.getElementById("username").value,
+            password: document.getElementById("password").value,
+            email: document.getElementById("email").value
         }),
         contentType: "application/json",
         success: function(data){
             console.log(data)
-            loginState.innerText = `Вы вошли! Идёт вход в клиент`;
+            loginState.innerText = `Вы зарегистрированы! Идёт вход в клиент`;
             localStorage.setItem("token", data['token']);
         },
         error: function (jqXHR, exception) {
@@ -20,9 +21,6 @@ async function login() {
             console.log(exception)
             if (jqXHR.status === 0) {
                 loginState.innerText = 'Не подключен, проверьте свой интернет и повторите попытку';
-            }
-            else if (jqXHR.status == 404) {
-                loginState.innerText = "Аккаунт не найден, может быть вы неверно ввели почту или пароль";
             }
             else if (jqXHR.status == 400) {
                 loginState.innerText = "Некоторые поля требуются... Перезагрузите страницу, если эта проблема остаётся, обратитесь в поддержку данного сервера";
