@@ -72,11 +72,23 @@ async def site_map():
 
 @app.get('/')
 async def index():
+    return flask.render_template('check_localstorage.html')
+
+@app.get('/app')
+async def appx():
     return flask.render_template('app.html')
 
 @app.get('/login')
 async def login():
     return flask.render_template('login.html')
+
+@app.get('/register')
+async def register():
+    return flask.render_template('register.html')
+
+@app.get('/discovery')
+async def discovery():
+    return flask.render_template('discovery.html')
 
 # @app.get('/easter-egg')
 # async def easter_egg():
@@ -229,6 +241,17 @@ async def auth_register():
     return {'token': token}, 200
 
     #discriminator = str(random.randint(1,9))
+
+@app.get('/auth/check_token')
+async def auth_check_token():
+    token = request.headers['Authorization']
+    cursor.execute("SELECT user_id FROM auth_tokens WHERE auth_token = ?", (token,))
+    data = cursor.fetchone()
+
+    if data is None:
+        return {'message': 'Account not found'}, 404
+    else:
+        return {'message': 'Account found'}
 
 @app.get('/api/users/@me')
 async def api_users_me():
